@@ -10,9 +10,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "CRD360 — Construction & Renovation Safety Platform",
+  title: "360crd — Construction & Renovation Safety Platform",
   description:
-    "CRD360 gives Superadmins, Managers, Staff and Field Crews one connected platform for incidents, waste, training, inductions, PPE, assets and ISO 45001 / ISO 14001 / OSHA-ready audits.",
+    "360crd gives Superadmins, Managers, Staff and Field Crews one connected platform for incidents, waste, training, inductions, PPE, assets and ISO 45001 / ISO 14001 / OSHA-ready audits.",
 };
 
 const THEME_INIT_SCRIPT = `

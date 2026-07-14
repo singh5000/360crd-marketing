@@ -49,8 +49,8 @@ const COMPANIES: {
   highlight?: string;
 }[] = [
   { name: "Company A", records: "142 records", accent: "#e2e8f0" },
-  { name: "Company B", records: "218 records", accent: "#7e14ff", highlight: "Users" },
-  { name: "Company C", records: "87 records", accent: "#47bfff" },
+  { name: "Company B", records: "218 records", accent: "#2563eb", highlight: "Users" },
+  { name: "Company C", records: "87 records", accent: "#38bdf8" },
 ];
 
 const COMPANY_MODULES = ["Incidents", "Users", "Audits", "Waste Reports"];
@@ -211,7 +211,7 @@ function ConnectorLines({
               key={`pulse-${lineIndex}`}
               d={bezierPath(line)}
               fill="none"
-              stroke="#47bfff"
+              stroke="#38bdf8"
               strokeWidth={2.5}
               strokeLinecap="round"
               pathLength={100}
@@ -386,10 +386,10 @@ export default function SecurityCore() {
               />
               <div
                 ref={coreRef}
-                className="relative rounded-2xl bg-gradient-to-br from-violet to-sky p-6 shadow-[0_0_70px_-12px_rgba(126,20,255,0.7)] sm:p-7"
+                className="relative rounded-2xl bg-gradient-to-br from-violet to-sky p-6 shadow-[0_0_70px_-12px_rgba(37,99,235,0.7)] sm:p-7"
               >
                 <p className="text-center text-xs font-bold uppercase tracking-[0.26em] text-white/75">
-                  CRD360
+                  360crd
                 </p>
                 <p className="mt-1.5 text-center text-[26px] font-extrabold tracking-tight text-white">
                   Security Core

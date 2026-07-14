@@ -29,7 +29,7 @@ import {
 import { cn } from "@/lib/utils";
 
 /**
- * Section 3 — "old way vs. with CRD360" comparison. Centered two-line
+ * Section 3 — "old way vs. with 360crd" comparison. Centered two-line
  * heading, tabbed panels (messy collage + pain list on the left, the real
  * incident pipeline with timestamps, feature strip and outcome stats on the
  * right), and a full-width closing banner.
@@ -44,14 +44,14 @@ type PipelineStage = {
   timestamp: string;
 };
 
-// Real CRD360 incident pipeline — the stage-by-stage color progression is
+// Real 360crd incident pipeline — the stage-by-stage color progression is
 // the point: violet -> amber -> rose -> sky (active) -> emerald-light ->
 // emerald-solid.
 const PIPELINE_STAGES: PipelineStage[] = [
-  { label: "Submitted", icon: FileText, color: "#7e14ff", timestamp: "04 Dec, 10:15 AM" },
+  { label: "Submitted", icon: FileText, color: "#2563eb", timestamp: "04 Dec, 10:15 AM" },
   { label: "Under Manager Review", icon: Eye, color: "#f59e0b", timestamp: "04 Dec, 11:20 AM" },
   { label: "Escalated", icon: TriangleAlert, color: "#e11d48", timestamp: "04 Dec, 01:10 PM" },
-  { label: "Action In Progress", icon: Wrench, color: "#47bfff", timestamp: "04 Dec, 02:45 PM" },
+  { label: "Action In Progress", icon: Wrench, color: "#38bdf8", timestamp: "04 Dec, 02:45 PM" },
   { label: "Action Completed", icon: CircleCheckBig, color: "#34d399", timestamp: "Pending" },
   { label: "Closed", icon: Lock, color: "#059669", timestamp: "Pending" },
 ];
@@ -449,17 +449,17 @@ function TheOldWay({ reduced }: { reduced: boolean }) {
   );
 }
 
-function WithCRD360({ reduced }: { reduced: boolean }) {
+function With360crd({ reduced }: { reduced: boolean }) {
   const rowOne = PIPELINE_STAGES.slice(0, 3);
   const rowTwo = PIPELINE_STAGES.slice(3, 6);
 
   return (
     <div className="flex h-full flex-col">
       <span className="inline-flex w-fit items-center gap-2 rounded-t-xl bg-violet px-5 py-2.5 text-sm font-bold tracking-[0.1em] text-white">
-        WITH CRD360
+        WITH 360CRD
         <BadgeCheck className="h-4.5 w-4.5" aria-hidden="true" />
       </span>
-      <div className="flex flex-1 flex-col rounded-2xl rounded-tl-none border border-violet/15 bg-white p-5 shadow-[0_24px_60px_-24px_rgba(126,20,255,0.25)] dark:border-white/10 dark:bg-slate-900 dark:shadow-[0_24px_60px_-24px_rgba(0,0,0,0.7)] sm:p-6 lg:p-7">
+      <div className="flex flex-1 flex-col rounded-2xl rounded-tl-none border border-violet/15 bg-white p-5 shadow-[0_24px_60px_-24px_rgba(37,99,235,0.25)] dark:border-white/10 dark:bg-slate-900 dark:shadow-[0_24px_60px_-24px_rgba(0,0,0,0.7)] sm:p-6 lg:p-7">
         {/* Pipeline stepper — vertically centered inside the card's flexible
             space so equal-height stretching distributes extra room evenly
             around it instead of pooling into one blank gap. */}
@@ -579,7 +579,7 @@ export default function ProblemSolution() {
             </span>
           </h2>
           <p className="mt-4 text-lg text-slate-500 dark:text-slate-400">
-            See the difference CRD360 brings to every incident.
+            See the difference 360crd brings to every incident.
           </p>
         </motion.div>
 
@@ -596,12 +596,12 @@ export default function ProblemSolution() {
               className="flex justify-center lg:hidden"
               aria-hidden="true"
             >
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-violet shadow-[0_12px_30px_-10px_rgba(126,20,255,0.6)]">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-violet shadow-[0_12px_30px_-10px_rgba(37,99,235,0.6)]">
                 <ArrowDown className="h-5 w-5 text-white" />
               </span>
             </motion.div>
 
-            <WithCRD360 reduced={reduced} />
+            <With360crd reduced={reduced} />
           </div>
 
           {/* Desktop connector floating at the seam */}
@@ -613,7 +613,7 @@ export default function ProblemSolution() {
             className="pointer-events-none absolute left-[40%] top-1/2 z-20 hidden -translate-x-1/2 -translate-y-1/2 lg:block"
             aria-hidden="true"
           >
-            <span className="flex h-14 w-14 items-center justify-center rounded-full bg-violet shadow-[0_16px_36px_-12px_rgba(126,20,255,0.65)]">
+            <span className="flex h-14 w-14 items-center justify-center rounded-full bg-violet shadow-[0_16px_36px_-12px_rgba(37,99,235,0.65)]">
               <ArrowRight className="h-6 w-6 text-white" />
             </span>
           </motion.div>
@@ -631,7 +631,7 @@ export default function ProblemSolution() {
             <Sparkles className="h-5 w-5" aria-hidden="true" />
           </span>
           <p className="text-base font-medium text-slate-800 dark:text-slate-100 sm:text-lg">
-            CRD360 turns chaos into clarity — so your team can focus on what
+            360crd turns chaos into clarity — so your team can focus on what
             matters most: workplace safety.
           </p>
         </motion.div>

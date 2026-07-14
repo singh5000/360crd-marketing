@@ -19,7 +19,7 @@ import { useScrollLock } from "@/hooks/use-scroll-lock";
 
 /**
  * Section 8 — "Industry solutions" numbered auto-advancing accordion. Real
- * CRD360 capabilities contextualized per Site.type, not industry-exclusive
+ * 360crd capabilities contextualized per Site.type, not industry-exclusive
  * features. Desktop gets the full scroll-lock + autoplay + progress-bar
  * treatment; tablet keeps autoplay but never locks scroll (scroll-jacking is
  * unreliable at that width); mobile is a deliberately plain tap accordion —
@@ -76,7 +76,7 @@ const INDUSTRIES: { title: string; capabilities: [string, string, string, string
     ],
   },
   // The 5 below extend the same pattern as the site-type set above — real
-  // CRD360 modules (incidents, PPE, inductions, audits, assets,
+  // 360crd modules (incidents, PPE, inductions, audits, assets,
   // environmental compliance) contextualized to more site types, not new
   // invented capabilities.
   {
@@ -346,7 +346,7 @@ function DemoCTACard() {
 
         <div className="mt-auto pt-4">
           <p className="text-2xl font-bold leading-snug text-white">
-            See CRD360 running on a site like yours.
+            See 360crd running on a site like yours.
           </p>
           <p className="mt-2 text-sm leading-relaxed text-white/80">
             Book a 20-minute walkthrough built around your own site type and
@@ -471,7 +471,7 @@ function InteractiveAccordion({
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-slate-600 dark:text-slate-300">
               Construction, manufacturing, warehousing, mining — every site
-              type carries different risks. CRD360&apos;s core modules adapt
+              type carries different risks. 360crd&apos;s core modules adapt
               to what your team actually deals with, without needing a
               different tool for each one.
             </p>
@@ -599,7 +599,7 @@ function MobileAccordion() {
         </h2>
         <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300">
           Construction, manufacturing, warehousing, mining — every site type
-          carries different risks. CRD360&apos;s core modules adapt to what
+          carries different risks. 360crd&apos;s core modules adapt to what
           your team actually deals with, without needing a different tool for
           each one.
         </p>

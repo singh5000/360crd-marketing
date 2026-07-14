@@ -10,7 +10,7 @@ import { ArrowRight, ShieldCheck } from "lucide-react";
  * openly-licensed image (CC BY 4.0, Daniel Mekis via Wikimedia Commons —
  * see the credit line at the bottom of the section, required by the
  * license), not a coded placeholder. Swap /public/images/cta-construction-
- * site.jpg for real CRD360 site photography when available and this
+ * site.jpg for real 360crd site photography when available and this
  * component needs no other changes.
  */
 
@@ -76,7 +76,7 @@ export default function FinalCTA() {
             Ready to run your sites like software?
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-300">
-            Book a 20-minute walkthrough and see CRD360 running on a site
+            Book a 20-minute walkthrough and see 360crd running on a site
             like yours — incidents, waste, training and audits, all in one
             place.
           </p>

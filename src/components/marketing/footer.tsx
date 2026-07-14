@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils";
  */
 
 const CONTACT_INFO = {
-  email: "hello@crd360.com",
+  email: "hello@360crd.com",
   phone: "+1 (000) 000-0000",
   address: "Address to be added before launch",
 };
@@ -49,7 +49,7 @@ function YouTubeIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-// TODO: point these at CRD360's real social profiles once they exist.
+// TODO: point these at 360crd's real social profiles once they exist.
 const SOCIALS: { label: string; icon: (props: SVGProps<SVGSVGElement>) => React.JSX.Element }[] = [
   { label: "LinkedIn", icon: LinkedInIcon },
   { label: "X", icon: XIcon },
@@ -204,12 +204,12 @@ export default function Footer() {
               <Link
                 href="/"
                 className="flex items-center gap-2.5 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky"
-                aria-label="CRD360 home"
+                aria-label="360crd home"
               >
                 <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-violet to-sky">
                   <ShieldCheck className="h-5 w-5 text-white" strokeWidth={2.25} aria-hidden="true" />
                 </span>
-                <span className="text-lg font-extrabold tracking-tight text-white">CRD360</span>
+                <span className="text-lg font-extrabold tracking-tight text-white">360crd</span>
               </Link>
               <p className="mt-4 text-sm leading-relaxed text-slate-400">
                 One connected platform for incidents, waste, training,
@@ -328,7 +328,7 @@ export default function Footer() {
           {/* Bottom bar */}
           <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-8 sm:flex-row">
             <p className="text-xs text-slate-500">
-              Copyright © {year} CRD360. All rights reserved.
+              Copyright © {year} 360crd. All rights reserved.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
               {LEGAL_LINKS.map((link) => (

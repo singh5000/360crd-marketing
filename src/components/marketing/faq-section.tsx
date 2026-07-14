@@ -19,22 +19,22 @@ type FaqItem = { question: string; answer: string };
 
 const FAQS: FaqItem[] = [
   {
-    question: "How is CRD360 priced?",
+    question: "How is 360crd priced?",
     answer:
-      "CRD360 has three plans — Starter, Professional, and Enterprise — priced by how many sites and team members you're running, not by which modules you use. Every plan includes the full incident, waste, training, induction and audit toolkit. See the full breakdown on our pricing page.",
+      "360crd has three plans — Starter, Professional, and Enterprise — priced by how many sites and team members you're running, not by which modules you use. Every plan includes the full incident, waste, training, induction and audit toolkit. See the full breakdown on our pricing page.",
   },
   {
     question: "Can I control exactly what each role can see and edit?",
     answer:
-      "Yes. CRD360's permission engine controls view, add, edit and delete access per module, per role. Superadmins see the whole portfolio, Managers see their sites, and Staff and Field Crews only see what their role needs — right down to what shows in their sidebar.",
+      "Yes. 360crd's permission engine controls view, add, edit and delete access per module, per role. Superadmins see the whole portfolio, Managers see their sites, and Staff and Field Crews only see what their role needs — right down to what shows in their sidebar.",
   },
   {
-    question: "Is our company's data isolated from other companies on CRD360?",
+    question: "Is our company's data isolated from other companies on 360crd?",
     answer:
-      "Yes. CRD360 is multi-tenant by design — every request is scoped to your company's data through the same isolation layer, so incidents, users, audits and waste reports never cross between companies, even on the same shared platform.",
+      "Yes. 360crd is multi-tenant by design — every request is scoped to your company's data through the same isolation layer, so incidents, users, audits and waste reports never cross between companies, even on the same shared platform.",
   },
   {
-    question: "What compliance standards does CRD360 support?",
+    question: "What compliance standards does 360crd support?",
     answer:
       "Audit templates map to ISO 45001, ISO 14001 and OSHA out of the box, with support for your own internal safety policies alongside them. Templates support text, Yes/No and rating questions, with configurable frequency and threshold scoring.",
   },
@@ -46,7 +46,7 @@ const FAQS: FaqItem[] = [
   {
     question: "Is there a mobile app?",
     answer:
-      "CRD360 is fully responsive and built mobile-first for field use — crews can scan QR codes, log incidents with photos, and complete inductions directly from a phone browser, no separate app install required.",
+      "360crd is fully responsive and built mobile-first for field use — crews can scan QR codes, log incidents with photos, and complete inductions directly from a phone browser, no separate app install required.",
   },
   {
     question: "Can Managers add their own team members?",

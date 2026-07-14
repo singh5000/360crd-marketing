@@ -123,7 +123,7 @@ export default function Hero() {
             variants={fadeUp(0.16)}
             className="mb-8 max-w-3xl text-base leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg"
           >
-            CRD360 gives Superadmins, Managers, Staff and Field Crews one
+            360crd gives Superadmins, Managers, Staff and Field Crews one
             connected platform — incidents, waste, training, inductions,
             PPE, assets and ISO 45001 / ISO 14001 / OSHA-ready audits —
             instead of four disconnected tools.

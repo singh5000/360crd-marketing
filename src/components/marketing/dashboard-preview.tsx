@@ -26,7 +26,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const SITE_STATUS: Record<"healthy" | "attention" | "audit", string> = {
   healthy: "#34d399",
   attention: "#f59e0b",
-  audit: "#7e14ff",
+  audit: "#2563eb",
 };
 
 const SITES: Array<keyof typeof SITE_STATUS> = [
@@ -54,7 +54,7 @@ const STATS = [
     label: "Waste logged (QR)",
     value: "1,204",
     icon: Recycle,
-    color: "#47bfff",
+    color: "#38bdf8",
     deltaLabel: "14% more vs last month",
     deltaDown: false,
     line: "M0,50 L28,42 L57,46 L85,32 L114,36 L142,20 L171,24 L200,8",
@@ -101,7 +101,7 @@ function SafetyScoreCard() {
             className="relative h-20 w-20 rounded-full p-[3px] sm:h-24 sm:w-24"
             style={{
               background:
-                "conic-gradient(from -90deg, #7e14ff 0deg, #47bfff 345deg, rgba(15,23,42,0.08) 345deg 360deg)",
+                "conic-gradient(from -90deg, #2563eb 0deg, #38bdf8 345deg, rgba(15,23,42,0.08) 345deg 360deg)",
             }}
           >
             <div className="flex h-full w-full flex-col items-center justify-center rounded-full bg-white dark:bg-slate-900">
@@ -121,12 +121,12 @@ function SafetyScoreCard() {
       <svg viewBox="0 0 200 44" className="mt-4 h-11 w-full" preserveAspectRatio="none">
         <defs>
           <linearGradient id="safety-area" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#7e14ff" stopOpacity="0.25" />
-            <stop offset="100%" stopColor="#7e14ff" stopOpacity="0" />
+            <stop offset="0%" stopColor="#2563eb" stopOpacity="0.25" />
+            <stop offset="100%" stopColor="#2563eb" stopOpacity="0" />
           </linearGradient>
           <linearGradient id="safety-line" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#7e14ff" />
-            <stop offset="100%" stopColor="#47bfff" />
+            <stop offset="0%" stopColor="#2563eb" />
+            <stop offset="100%" stopColor="#38bdf8" />
           </linearGradient>
         </defs>
         <path
@@ -301,7 +301,7 @@ export default function DashboardPreview() {
   return (
     <div
       role="img"
-      aria-label="CRD360 Superadmin dashboard shown as six floating cards: portfolio safety score, open incidents, waste logged, training compliance, a multi-site status heatmap, and ISO/OSHA compliance readiness"
+      aria-label="360crd Superadmin dashboard shown as six floating cards: portfolio safety score, open incidents, waste logged, training compliance, a multi-site status heatmap, and ISO/OSHA compliance readiness"
       className="relative mx-auto grid w-full max-w-5xl grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-7"
     >
       {columns.map((col, colI) => (

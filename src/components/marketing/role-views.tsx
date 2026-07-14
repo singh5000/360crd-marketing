@@ -143,8 +143,8 @@ const SIDEBAR_ITEMS: { label: string; icon: LucideIcon }[] = [
 ];
 
 const DONUT_SEGMENTS = [
-  { label: "Hazard", pct: 35, color: "#7e14ff" },
-  { label: "Environment", pct: 28, color: "#47bfff" },
+  { label: "Hazard", pct: 35, color: "#2563eb" },
+  { label: "Environment", pct: 28, color: "#38bdf8" },
   { label: "Near Miss", pct: 20, color: "#34d399" },
   { label: "Injury", pct: 17, color: "#f59e0b" },
 ];
@@ -159,7 +159,7 @@ const COMPLIANCE_BARS = [
 const ACTIVITIES = [
   { icon: ClipboardCheck, tone: "#34d399", text: "Site audit completed — Brisbane Airport", time: "2m ago" },
   { icon: TriangleAlert, tone: "#e11d48", text: "Incident escalated — Dubai Site", time: "12m ago" },
-  { icon: UserPlus, tone: "#47bfff", text: "New user added — Site Manager", time: "45m ago" },
+  { icon: UserPlus, tone: "#38bdf8", text: "New user added — Site Manager", time: "45m ago" },
   { icon: Recycle, tone: "#f59e0b", text: "Waste approval — Sydney Project", time: "1h ago" },
 ];
 
@@ -321,8 +321,8 @@ function DashboardMock({ role, reduced }: { role: Role; reduced: boolean }) {
               <svg viewBox="0 0 320 90" className="mt-2 h-24 w-full" preserveAspectRatio="none">
                 <defs>
                   <linearGradient id="rv-area" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#7e14ff" stopOpacity="0.28" />
-                    <stop offset="100%" stopColor="#7e14ff" stopOpacity="0" />
+                    <stop offset="0%" stopColor="#2563eb" stopOpacity="0.28" />
+                    <stop offset="100%" stopColor="#2563eb" stopOpacity="0" />
                   </linearGradient>
                 </defs>
                 <path
@@ -332,7 +332,7 @@ function DashboardMock({ role, reduced }: { role: Role; reduced: boolean }) {
                 <path
                   d="M0,60 C20,48 30,42 50,50 C70,58 80,68 100,62 C120,56 130,40 150,46 C170,52 180,64 200,58 C215,53 225,30 245,24 C265,18 275,34 295,42 L320,38"
                   fill="none"
-                  stroke="#7e14ff"
+                  stroke="#2563eb"
                   strokeWidth="2"
                   strokeLinecap="round"
                 />
@@ -445,7 +445,7 @@ export default function RoleViews() {
         aria-hidden="true"
         className="pointer-events-none absolute left-8 top-16 h-40 w-40 opacity-50"
         style={{
-          backgroundImage: "radial-gradient(circle, rgba(126,20,255,0.25) 1.5px, transparent 1.5px)",
+          backgroundImage: "radial-gradient(circle, rgba(37,99,235,0.25) 1.5px, transparent 1.5px)",
           backgroundSize: "14px 14px",
         }}
       />
@@ -498,7 +498,7 @@ export default function RoleViews() {
                 className={cn(
                   "flex-1 whitespace-nowrap rounded-full px-2.5 py-2.5 text-xs font-semibold transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky sm:px-4 sm:text-base",
                   role.key === activeKey
-                    ? "bg-violet text-white shadow-[0_8px_20px_-8px_rgba(126,20,255,0.6)]"
+                    ? "bg-violet text-white shadow-[0_8px_20px_-8px_rgba(37,99,235,0.6)]"
                     : "text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
                 )}
               >

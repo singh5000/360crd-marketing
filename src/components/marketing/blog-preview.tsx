@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 /**
  * Section 10 — "From the blog" preview strip, 3 latest posts. No CMS is
  * wired up yet, so POSTS below is realistic placeholder editorial content
- * (real CRD360 subject matter — incidents, compliance, waste — not generic
+ * (real 360crd subject matter — incidents, compliance, waste — not generic
  * filler) and thumbnails are coded gradient/icon compositions rather than
  * real photography. Swap POSTS for a real data fetch (and the thumbnail
  * markup for next/image) once the blog/CMS exists.
@@ -64,9 +64,10 @@ const POSTS: Post[] = [
   {
     slug: "qr-tagged-waste-tracking-90-day-case-study",
     category: "Waste Management",
-    color: "#47bfff",
+    color: "#38bdf8",
     icon: Recycle,
     title: "QR-Tagged Waste Tracking: A 90-Day Case Study",
+
     excerpt:
       "One contractor moved from paper waste logs to QR-tagged tracking across 12 sites. Here's what changed in disposal times, and what didn't.",
     author: "Priya Nair",

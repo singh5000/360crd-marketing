@@ -15,11 +15,11 @@ import { cn } from "@/lib/utils";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const STANDARDS = [
-  { name: "ISO 45001", descriptor: "Occupational health & safety management", color: "#7e14ff" },
+  { name: "ISO 45001", descriptor: "Occupational health & safety management", color: "#2563eb" },
   { name: "ISO 14001", descriptor: "Environmental management systems", color: "#34d399" },
   { name: "OSHA", descriptor: "U.S. workplace safety compliance", color: "#f59e0b" },
-  { name: "Factory Compliance", descriptor: "Facility & factory safety inspection", color: "#47bfff" },
-  { name: "Internal Safety Policy", descriptor: "Your own custom safety standards", color: "#6366f1" },
+  { name: "Factory Compliance", descriptor: "Facility & factory safety inspection", color: "#38bdf8" },
+  { name: "Internal Safety Policy", descriptor: "Your own custom safety standards", color: "#1e40af" },
 ];
 
 function dividerClass(index: number) {
@@ -61,7 +61,7 @@ function GridTile({
       variants={tileVariants(index, !!reduced)}
       className={cn(
         "group flex flex-col items-center gap-3 px-4 py-6 text-center transition-all duration-150",
-        "hover:-translate-y-0.5 hover:rounded-xl hover:bg-white hover:shadow-[0_16px_40px_-20px_rgba(126,20,255,0.35)]",
+        "hover:-translate-y-0.5 hover:rounded-xl hover:bg-white hover:shadow-[0_16px_40px_-20px_rgba(37,99,235,0.35)]",
         "dark:hover:bg-slate-900 dark:hover:shadow-[0_16px_40px_-20px_rgba(0,0,0,0.6)]",
         "lg:px-6",
         dividerClass(index)
@@ -100,7 +100,7 @@ function MobileTile({
       className={cn(
         "flex flex-col items-center gap-3 rounded-xl px-4 py-7 text-center transition-all duration-150",
         active &&
-          "-translate-y-0.5 bg-white shadow-[0_16px_40px_-20px_rgba(126,20,255,0.35)] dark:bg-slate-900 dark:shadow-[0_16px_40px_-20px_rgba(0,0,0,0.6)]"
+          "-translate-y-0.5 bg-white shadow-[0_16px_40px_-20px_rgba(37,99,235,0.35)] dark:bg-slate-900 dark:shadow-[0_16px_40px_-20px_rgba(0,0,0,0.6)]"
       )}
     >
       <span
@@ -167,7 +167,7 @@ export default function ComplianceStrip() {
   return (
     <section
       aria-labelledby="compliance-heading"
-      className="relative snap-start overflow-hidden border-y border-rule bg-gradient-to-b from-violet-50/60 via-white to-white py-16 dark:from-slate-900 dark:via-slate-950 dark:to-slate-950 sm:py-20"
+      className="relative snap-start overflow-hidden border-y border-rule bg-gradient-to-b from-blue-50/60 via-white to-white py-16 dark:from-slate-900 dark:via-slate-950 dark:to-slate-950 sm:py-20"
     >
       <div
         aria-hidden="true"

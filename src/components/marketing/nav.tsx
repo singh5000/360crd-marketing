@@ -94,13 +94,13 @@ export default function Nav() {
         <Link
           href="/"
           className="flex shrink-0 items-center gap-2.5 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky"
-          aria-label="CRD360 home"
+          aria-label="360crd home"
         >
           <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-violet to-sky shadow-[0_0_20px_-6px_var(--sky)]">
             <ShieldCheck className="h-5 w-5 text-white" strokeWidth={2.25} />
           </span>
           <span className="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white">
-            CRD360
+            360crd
           </span>
         </Link>
 

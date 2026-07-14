@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 /* Attribute-based dark mode: toggled by setting data-theme="dark" on <html>,
-   matching the pattern the live CRD360 product dashboards already use. */
+   matching the pattern the live 360crd product dashboards already use. */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 :root {
-  --violet: #7e14ff;
-  --sky: #47bfff;
+  --violet: #2563eb;
+  --sky: #38bdf8;
 
   --background: #ffffff;
   --foreground: #0f172a;

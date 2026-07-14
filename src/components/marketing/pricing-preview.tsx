@@ -218,7 +218,7 @@ function PlanCard({
         // order (see the grid's own comment for the column-span choice).
         plan.popular ? "order-first sm:col-span-2 lg:order-none lg:col-span-1" : "",
         plan.popular
-          ? "border-2 border-violet bg-white shadow-[0_30px_60px_-24px_rgba(126,20,255,0.35)] dark:bg-slate-800 lg:scale-[1.03]"
+          ? "border-2 border-violet bg-white shadow-[0_30px_60px_-24px_rgba(37,99,235,0.35)] dark:bg-slate-800 lg:scale-[1.03]"
           : "border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800/60"
       )}
     >

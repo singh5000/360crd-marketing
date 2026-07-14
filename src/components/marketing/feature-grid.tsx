@@ -51,7 +51,7 @@ const FEATURES: Feature[] = [
     title: "Waste Management",
     href: "/features/waste-management",
     icon: Recycle,
-    color: "#47bfff",
+    color: "#38bdf8",
     description:
       "Track waste from report to disposal with QR-linked site tagging.",
     bullets: [
@@ -64,7 +64,7 @@ const FEATURES: Feature[] = [
     title: "Training & Certification",
     href: "/features/training",
     icon: GraduationCap,
-    color: "#7e14ff",
+    color: "#2563eb",
     description:
       "Assign role-based training and generate certificates the moment it's completed.",
     bullets: [
@@ -103,7 +103,7 @@ const FEATURES: Feature[] = [
     title: "Roles & Permissions",
     href: "/features/roles-permissions",
     icon: ShieldCheck,
-    color: "#6366f1",
+    color: "#1e40af",
     description:
       "One granular permission engine — Superadmin, Manager, Staff and User, each with their own view.",
     bullets: [
