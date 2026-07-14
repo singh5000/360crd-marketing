@@ -2,21 +2,28 @@
 
 import { useEffect, useState, type SVGProps } from "react";
 import Link from "next/link";
-import { ArrowUp, Mail, ShieldCheck } from "lucide-react";
+import { ArrowUp, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /**
  * Site-wide mega footer — every real route this build links to (features,
  * solutions, pricing, blog, demo/sales, legal) organized into columns, plus
- * a brand block, newsletter signup and a back-to-top button. Deliberately
- * omits a physical-office-locations row (unlike the reference layout) since
- * no real CRD360 office addresses exist to put there — inventing specific
- * street addresses would be worse than leaving it out.
+ * a brand block, contact info, newsletter signup and a back-to-top button.
+ *
+ * TODO(contact): CONTACT_INFO below is a clearly-marked placeholder — no
+ * real support email, phone or HQ address exists yet. Replace before launch;
+ * don't let the placeholder values ship as if they were real.
  *
  * lucide-react has no brand/social logos (by design, to avoid trademark
  * issues), so the 3 social icons below are small hand-authored SVGs, not a
  * violation of the site's "icons: lucide-react only" rule for general UI.
  */
+
+const CONTACT_INFO = {
+  email: "hello@crd360.com",
+  phone: "+1 (000) 000-0000",
+  address: "Address to be added before launch",
+};
 
 function XIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -189,8 +196,10 @@ export default function Footer() {
     <>
       <footer className="relative snap-start bg-slate-950 pt-16 sm:pt-20">
         <div className="section-shell">
-          {/* Brand + newsletter */}
-          <div className="flex flex-col gap-10 border-b border-white/10 pb-12 lg:flex-row lg:items-start lg:justify-between lg:gap-6">
+          {/* Brand + contact + newsletter — 3 blocks rather than 2, so
+              justify-between doesn't strand one huge empty gap in the
+              middle on very wide screens. */}
+          <div className="grid grid-cols-1 gap-10 border-b border-white/10 pb-12 lg:grid-cols-3 lg:gap-8">
             <div className="max-w-sm">
               <Link
                 href="/"
@@ -221,7 +230,35 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="w-full max-w-sm">
+            <div className="max-w-sm">
+              <p className="text-sm font-semibold text-white">Contact</p>
+              <ul className="mt-4 space-y-3">
+                <li>
+                  <a
+                    href={`mailto:${CONTACT_INFO.email}`}
+                    className="flex items-start gap-2.5 rounded-sm text-sm text-slate-400 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky"
+                  >
+                    <Mail className="mt-0.5 h-4 w-4 shrink-0 text-slate-500" aria-hidden="true" />
+                    {CONTACT_INFO.email}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={`tel:${CONTACT_INFO.phone.replace(/[^+\d]/g, "")}`}
+                    className="flex items-start gap-2.5 rounded-sm text-sm text-slate-400 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky"
+                  >
+                    <Phone className="mt-0.5 h-4 w-4 shrink-0 text-slate-500" aria-hidden="true" />
+                    {CONTACT_INFO.phone}
+                  </a>
+                </li>
+                <li className="flex items-start gap-2.5 text-sm text-slate-400">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-slate-500" aria-hidden="true" />
+                  {CONTACT_INFO.address}
+                </li>
+              </ul>
+            </div>
+
+            <div className="w-full max-w-sm lg:justify-self-end">
               <p className="text-sm font-semibold text-white">Get product updates</p>
               <p className="mt-1.5 text-sm leading-relaxed text-slate-400">
                 New modules, compliance templates and release notes — no
