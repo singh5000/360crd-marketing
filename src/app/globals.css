@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/* Attribute-based dark mode: toggled by setting data-theme="dark" on <html>,
+   matching the pattern the live CRD360 product dashboards already use. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  --violet: #7e14ff;
+  --sky: #47bfff;
+
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --rule: #efefef;
+}
+
+[data-theme="dark"] {
+  --background: #020617;
+  --foreground: #f1f5f9;
+  --rule: rgba(255, 255, 255, 0.1);
+}
+
+@theme inline {
+  --color-violet: var(--violet);
+  --color-sky: var(--sky);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-rule: var(--rule);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Scroll-snap host for the 13-section homepage. Individual sections opt in
+   with `snap-start`. */
+.snap-scroll {
+  scroll-snap-type: y proximity;
+}
+
+/* Shared section container: centered + capped below 1400px, edge-to-edge
+   with fixed 70px gutters above 1400px. Defined as one utility (instead of
+   px-* + min-[1400px]:px-* classes) because separate media-query utilities
+   can lose the cascade to each other depending on output order. */
+@utility section-shell {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 80rem;
+  padding-inline: 1rem;
+
+  @media (min-width: 40rem) {
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 64rem) {
+    padding-inline: 2rem;
+  }
+
+  @media (min-width: 1400px) {
+    max-width: none;
+    padding-inline: 70px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
