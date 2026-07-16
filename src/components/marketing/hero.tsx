@@ -92,13 +92,13 @@ export default function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent dark:from-slate-950" />
       </div>
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl flex-1 grid-rows-[auto_auto] gap-10 px-4 sm:px-6 lg:px-8 min-[1400px]:max-w-none min-[1400px]:px-[30px]!">
-        <div className="flex flex-col items-center justify-center text-center">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl flex-1 items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:px-8 min-[1400px]:max-w-none min-[1400px]:px-[30px]! xl:gap-20">
+        <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
           <motion.p
             initial="hidden"
             animate="show"
             variants={fadeUp(0)}
-            className="mb-5 inline-flex items-center gap-2 self-center rounded-full border border-rule bg-slate-900/[0.03] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.1em] text-violet backdrop-blur-sm dark:bg-white/5 dark:text-sky"
+            className="mb-5 inline-flex items-center gap-2 self-center rounded-full border border-rule bg-slate-900/[0.03] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.1em] text-violet backdrop-blur-sm dark:bg-white/5 dark:text-sky lg:self-start"
           >
             <ShieldCheck className="h-3.5 w-3.5" aria-hidden="true" />
             Construction &amp; Renovation Safety Platform
@@ -108,7 +108,7 @@ export default function Hero() {
             initial="hidden"
             animate="show"
             variants={fadeUp(0.08)}
-            className="mb-5 max-w-5xl text-4xl font-extrabold leading-[1.1] tracking-tight text-slate-900 dark:text-white sm:text-5xl xl:text-6xl"
+            className="mb-5 max-w-xl text-4xl font-extrabold leading-[1.1] tracking-tight text-slate-900 dark:text-white sm:text-5xl xl:text-6xl"
           >
             Run{" "}
             <span className="bg-gradient-to-r from-violet to-sky bg-clip-text text-transparent">
@@ -121,7 +121,7 @@ export default function Hero() {
             initial="hidden"
             animate="show"
             variants={fadeUp(0.16)}
-            className="mb-8 max-w-3xl text-base leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg"
+            className="mb-8 max-w-xl text-base leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg"
           >
             360crd gives Superadmins, Managers, Staff and Field Crews one
             connected platform — incidents, waste, training, inductions,
@@ -154,16 +154,14 @@ export default function Hero() {
             initial="hidden"
             animate="show"
             variants={fadeUp(0.24)}
-            className="mt-6 flex items-center justify-center gap-2 text-xs text-slate-500 dark:text-slate-400 sm:text-sm"
+            className="mt-6 flex items-center justify-center gap-2 text-xs text-slate-500 dark:text-slate-400 sm:text-sm lg:justify-start"
           >
             ISO 45001 · ISO 14001 · OSHA-aligned audits built in
           </motion.p>
         </div>
 
-        <div className="relative z-10 flex items-start justify-center pb-6 sm:pb-8">
-          <div className="w-full max-w-6xl">
-            <DashboardPreview />
-          </div>
+        <div className="relative z-10 flex items-center justify-center pb-6 sm:pb-8 lg:justify-end lg:pb-0">
+          <DashboardPreview />
         </div>
       </div>
     </section>

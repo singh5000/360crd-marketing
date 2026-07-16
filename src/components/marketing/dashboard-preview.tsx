@@ -114,22 +114,22 @@ const DETAIL_CARDS: { title: string; rows: { label: string; value: string; tone?
 
 function TopBar() {
   return (
-    <div className="flex h-12 shrink-0 items-center gap-2.5 border-b border-slate-200 bg-white px-3 sm:h-14 sm:px-5">
-      <ChevronLeft className="hidden h-4 w-4 shrink-0 text-slate-300 sm:block" aria-hidden="true" />
-      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-blue-600 sm:h-7 sm:w-7">
-        <ShieldCheck className="h-3.5 w-3.5 text-white sm:h-4 sm:w-4" strokeWidth={2.25} />
+    <div className="flex h-12 shrink-0 items-center gap-2.5 border-b border-slate-200 bg-white px-3 @sm:h-14 @sm:px-5">
+      <ChevronLeft className="hidden h-4 w-4 shrink-0 text-slate-300 @sm:block" aria-hidden="true" />
+      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-blue-600 @sm:h-7 @sm:w-7">
+        <ShieldCheck className="h-3.5 w-3.5 text-white @sm:h-4 @sm:w-4" strokeWidth={2.25} />
       </span>
-      <span className="shrink-0 text-xs font-extrabold tracking-tight text-slate-900 sm:text-sm">
+      <span className="shrink-0 text-xs font-extrabold tracking-tight text-slate-900 @sm:text-sm">
         360CRD
       </span>
 
-      <div className="ml-2 hidden min-w-0 flex-1 items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-slate-400 sm:flex sm:max-w-xs">
+      <div className="ml-2 hidden min-w-0 flex-1 items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-slate-400 @lg:flex @lg:max-w-xs">
         <Search className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
         <span className="truncate text-xs">Search modules...</span>
       </div>
 
-      <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
-        <span className="hidden items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-medium text-slate-600 sm:flex">
+      <div className="ml-auto flex shrink-0 items-center gap-2 @sm:gap-3">
+        <span className="hidden items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-medium text-slate-600 @lg:flex">
           Urban Spark Media
           <ChevronDown className="h-3 w-3" aria-hidden="true" />
         </span>
@@ -147,11 +147,11 @@ function TopBar() {
 
 function Sidebar() {
   return (
-    <div className="hidden w-44 shrink-0 flex-col justify-between border-r border-slate-200 bg-white p-3 md:flex lg:w-52">
+    <div className="hidden w-44 shrink-0 flex-col justify-between border-r border-slate-200 bg-white p-3 @lg:flex @2xl:w-52">
       <div>
         {SIDEBAR_GROUPS.map((group) => (
           <div key={group.heading} className="mt-4 first:mt-0">
-            <p className="mb-1.5 px-2 text-[9px] font-semibold uppercase tracking-wider text-slate-400 lg:text-[10px]">
+            <p className="mb-1.5 px-2 text-[9px] font-semibold uppercase tracking-wider text-slate-400 @2xl:text-[10px]">
               {group.heading}
             </p>
             <div className="space-y-0.5">
@@ -162,7 +162,7 @@ function Sidebar() {
                   )}
                   <div
                     className={cn(
-                      "flex items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-[11px] font-medium lg:text-xs",
+                      "flex items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-[11px] font-medium @2xl:text-xs",
                       item.active ? "bg-blue-50 text-blue-600" : "text-slate-500"
                     )}
                   >
@@ -210,7 +210,7 @@ function Sidebar() {
 
 function StatCard({ stat }: { stat: (typeof STAT_CARDS)[number] }) {
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm sm:p-4">
+    <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm @sm:p-4">
       <div className="flex items-start justify-between">
         <span
           className="flex h-8 w-8 items-center justify-center rounded-lg"
@@ -220,17 +220,17 @@ function StatCard({ stat }: { stat: (typeof STAT_CARDS)[number] }) {
         </span>
         <ArrowUpRight className="h-3.5 w-3.5 text-slate-300" aria-hidden="true" />
       </div>
-      <p className="mt-3 text-xl font-extrabold leading-none text-slate-900 sm:text-2xl">
+      <p className="mt-3 text-xl font-extrabold leading-none text-slate-900 @sm:text-2xl">
         {stat.value}
       </p>
-      <p className="mt-1.5 truncate text-[10px] text-slate-500 sm:text-[11px]">{stat.label}</p>
+      <p className="mt-1.5 truncate text-[10px] text-slate-500 @sm:text-[11px]">{stat.label}</p>
     </div>
   );
 }
 
 function QuickActionCard({ action }: { action: (typeof QUICK_ACTIONS)[number] }) {
   return (
-    <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-3 shadow-sm sm:p-4">
+    <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-3 shadow-sm @sm:p-4">
       <span
         className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
         style={{ backgroundColor: `${action.tint}18`, color: action.tint }}
@@ -248,7 +248,7 @@ function QuickActionCard({ action }: { action: (typeof QUICK_ACTIONS)[number] })
 
 function DetailCard({ card }: { card: (typeof DETAIL_CARDS)[number] }) {
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm sm:p-4">
+    <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm @sm:p-4">
       <p className="text-xs font-semibold text-slate-900">{card.title}</p>
       <div className="mt-2.5 divide-y divide-slate-100">
         {card.rows.map((row) => (
@@ -278,49 +278,53 @@ export default function DashboardPreview() {
       };
 
   return (
-    <motion.div
-      role="img"
-      aria-label="360crd Superadmin dashboard: sidebar navigation, platform overview stat cards for total users, sites, companies and active trainings, quick actions, and audit, training and outstanding-action summaries"
-      initial="hidden"
-      animate="show"
-      variants={panelVariants}
-      className="mx-auto w-full max-w-5xl overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_40px_80px_-30px_rgba(15,23,42,0.35)]"
-    >
-      <div aria-hidden="true" className="flex flex-col">
-        <TopBar />
-        <div className="flex">
-          <Sidebar />
-          <div className="min-w-0 flex-1 bg-slate-50 p-3.5 sm:p-6">
-            <p className="text-[11px] font-medium text-slate-500 sm:text-xs">
-              Welcome back, johnsmith
-            </p>
-            <h3 className="mt-0.5 text-base font-extrabold text-slate-900 sm:text-2xl">
-              Platform Overview
-            </h3>
-            <p className="mt-1 text-[11px] text-slate-500 sm:text-sm">
-              Enterprise-wide visibility across all sites and operations.
-            </p>
+    <div className="@container mx-auto w-full max-w-5xl [perspective:1800px]">
+      <div className="lg:[transform:rotateY(-11deg)_rotateX(5deg)]">
+        <motion.div
+          role="img"
+          aria-label="360crd Superadmin dashboard: sidebar navigation, platform overview stat cards for total users, sites, companies and active trainings, quick actions, and audit, training and outstanding-action summaries"
+          initial="hidden"
+          animate="show"
+          variants={panelVariants}
+          className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_40px_80px_-30px_rgba(15,23,42,0.35)] lg:shadow-[0_70px_140px_-40px_rgba(15,23,42,0.5)]"
+        >
+          <div aria-hidden="true" className="flex flex-col">
+            <TopBar />
+            <div className="flex">
+              <Sidebar />
+              <div className="min-w-0 flex-1 bg-slate-50 p-3.5 @sm:p-6">
+                <p className="text-[11px] font-medium text-slate-500 @sm:text-xs">
+                  Welcome back, johnsmith
+                </p>
+                <h3 className="mt-0.5 text-base font-extrabold text-slate-900 @sm:text-2xl">
+                  Platform Overview
+                </h3>
+                <p className="mt-1 text-[11px] text-slate-500 @sm:text-sm">
+                  Enterprise-wide visibility across all sites and operations.
+                </p>
 
-            <div className="mt-4 grid grid-cols-2 gap-2.5 sm:mt-6 sm:grid-cols-4 sm:gap-4">
-              {STAT_CARDS.map((stat) => (
-                <StatCard key={stat.label} stat={stat} />
-              ))}
-            </div>
+                <div className="mt-4 grid grid-cols-2 gap-2.5 @lg:mt-6 @lg:grid-cols-4 @lg:gap-4">
+                  {STAT_CARDS.map((stat) => (
+                    <StatCard key={stat.label} stat={stat} />
+                  ))}
+                </div>
 
-            <div className="mt-2.5 grid grid-cols-1 gap-2.5 sm:mt-4 sm:grid-cols-3 sm:gap-4">
-              {QUICK_ACTIONS.map((action) => (
-                <QuickActionCard key={action.title} action={action} />
-              ))}
-            </div>
+                <div className="mt-2.5 grid grid-cols-1 gap-2.5 @lg:mt-4 @lg:grid-cols-3 @lg:gap-4">
+                  {QUICK_ACTIONS.map((action) => (
+                    <QuickActionCard key={action.title} action={action} />
+                  ))}
+                </div>
 
-            <div className="mt-2.5 grid grid-cols-1 gap-2.5 sm:mt-4 sm:grid-cols-3 sm:gap-4">
-              {DETAIL_CARDS.map((card) => (
-                <DetailCard key={card.title} card={card} />
-              ))}
+                <div className="mt-2.5 grid grid-cols-1 gap-2.5 @lg:mt-4 @lg:grid-cols-3 @lg:gap-4">
+                  {DETAIL_CARDS.map((card) => (
+                    <DetailCard key={card.title} card={card} />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </motion.div>
+    </div>
   );
 }
