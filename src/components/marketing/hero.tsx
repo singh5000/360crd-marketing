@@ -92,7 +92,7 @@ export default function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent dark:from-slate-950" />
       </div>
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl flex-1 items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:px-8 min-[1400px]:max-w-none min-[1400px]:px-[30px]! xl:gap-20">
+      <div className="relative z-10 mx-auto grid w-full max-w-[1360px] flex-1 items-center gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,36fr)_minmax(0,64fr)] lg:gap-8 lg:px-10 xl:gap-10 xl:px-16 min-[1400px]:max-w-none min-[1400px]:px-[150px]!">
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
           <motion.p
             initial="hidden"
@@ -114,7 +114,7 @@ export default function Hero() {
             <span className="bg-gradient-to-r from-violet to-sky bg-clip-text text-transparent">
               site safety
             </span>{" "}
-            like software — not paperwork.
+            like software - not paperwork.
           </motion.h1>
 
           <motion.p
@@ -124,8 +124,8 @@ export default function Hero() {
             className="mb-8 max-w-xl text-base leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg"
           >
             360crd gives Superadmins, Managers, Staff and Field Crews one
-            connected platform — incidents, waste, training, inductions,
-            PPE, assets and ISO 45001 / ISO 14001 / OSHA-ready audits —
+            connected platform - incidents, waste, training, inductions,
+            PPE, assets and ISO 45001 / ISO 14001 / OSHA-ready audits -
             instead of four disconnected tools.
           </motion.p>
 

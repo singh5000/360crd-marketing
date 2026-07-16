@@ -278,8 +278,8 @@ export default function DashboardPreview() {
       };
 
   return (
-    <div className="@container mx-auto w-full max-w-5xl [perspective:1800px]">
-      <div className="lg:[transform:rotateY(-11deg)_rotateX(5deg)]">
+    <div className="@container mx-auto w-full max-w-5xl [perspective:2600px] lg:mx-0 lg:max-w-none">
+      <div className="lg:[transform:rotateY(-6deg)_rotateX(2deg)]">
         <motion.div
           role="img"
           aria-label="360crd Superadmin dashboard: sidebar navigation, platform overview stat cards for total users, sites, companies and active trainings, quick actions, and audit, training and outstanding-action summaries"
