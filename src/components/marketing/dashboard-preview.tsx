@@ -2,262 +2,264 @@
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import {
-  AlertTriangle,
-  Recycle,
-  GraduationCap,
-  Check,
   ArrowUpRight,
-  TrendingUp,
-  TrendingDown,
+  Bell,
+  Box,
+  Building2,
+  ChevronDown,
+  ChevronLeft,
+  ClipboardCheck,
+  FileText,
+  GraduationCap,
+  HardHat,
+  LayoutDashboard,
+  LogOut,
+  MapPin,
+  Moon,
+  Search,
+  Settings,
+  Shield,
+  ShieldAlert,
+  ShieldCheck,
+  Sun,
+  Trash2,
+  Users,
+  type LucideIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /**
- * Coded placeholder for the real Superadmin dashboard screenshot. Deliberately
- * NOT a literal screenshot-in-a-browser-frame — instead six small, independently
- * floating "premium bento" cards pulled from real product data (safety score,
- * incident/waste/training trends, a multi-site heatmap, compliance badges).
- * Swap for real product data / a real export once available; keep the
- * role="img" aria-label below as the accessible description.
+ * Literal recreation of the real 360crd Superadmin dashboard (top bar,
+ * sidebar nav, stat cards, quick actions, detail cards) rather than a
+ * stylized bento mock — matched 1:1 to the live app's light theme so the
+ * Hero graphic doubles as an honest product screenshot. Deliberately
+ * light-only (no dark: variants): it's a fixed product screenshot, not a
+ * themed site element, so it doesn't flip with the site's theme toggle.
+ * Sidebar collapses on mobile, matching how the real app behaves at that
+ * width.
  */
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-const SITE_STATUS: Record<"healthy" | "attention" | "audit", string> = {
-  healthy: "#34d399",
-  attention: "#f59e0b",
-  audit: "#2563eb",
-};
+type SidebarItem = { label: string; icon: LucideIcon; active?: boolean };
+type SidebarGroup = { heading: string; items: SidebarItem[] };
 
-const SITES: Array<keyof typeof SITE_STATUS> = [
-  "healthy", "healthy", "healthy", "attention", "healthy", "healthy",
-  "audit", "healthy", "healthy", "attention", "healthy", "healthy",
-  "healthy", "healthy", "attention", "healthy", "audit", "healthy",
-  "healthy", "healthy", "healthy", "attention", "healthy", "healthy",
-];
-
-const SITE_COUNTS = { healthy: 18, attention: 4, audit: 2 };
-
-const STATS = [
+const SIDEBAR_GROUPS: SidebarGroup[] = [
+  { heading: "Overview", items: [{ label: "Dashboard", icon: LayoutDashboard, active: true }] },
+  { heading: "Super Admin", items: [{ label: "Companies", icon: Building2 }] },
   {
-    id: "incidents",
-    label: "Open incidents",
-    value: "12",
-    icon: AlertTriangle,
-    color: "#f59e0b",
-    deltaLabel: "8% fewer vs last month",
-    deltaDown: true,
-    line: "M0,18 L28,26 L57,22 L85,36 L114,30 L142,44 L171,38 L200,50",
+    heading: "Platform",
+    items: [
+      { label: "Sites", icon: MapPin },
+      { label: "Users", icon: Users },
+    ],
   },
   {
-    id: "waste",
-    label: "Waste logged (QR)",
-    value: "1,204",
-    icon: Recycle,
-    color: "#38bdf8",
-    deltaLabel: "14% more vs last month",
-    deltaDown: false,
-    line: "M0,50 L28,42 L57,46 L85,32 L114,36 L142,20 L171,24 L200,8",
+    heading: "Operations View",
+    items: [
+      { label: "Incidents", icon: ShieldAlert },
+      { label: "Audits", icon: ClipboardCheck },
+      { label: "Training", icon: GraduationCap },
+      { label: "Inductions", icon: FileText },
+      { label: "PPE", icon: HardHat },
+      { label: "Assets", icon: Box },
+      { label: "Waste", icon: Trash2 },
+    ],
+  },
+  { heading: "System", items: [{ label: "Settings", icon: Settings }] },
+];
+
+const STAT_CARDS: { label: string; value: string; icon: LucideIcon; tint: string }[] = [
+  { label: "Total Users", value: "0", icon: Users, tint: "#2563eb" },
+  { label: "Sites", value: "4", icon: MapPin, tint: "#10b981" },
+  { label: "Companies", value: "0", icon: Building2, tint: "#7c3aed" },
+  { label: "Active Trainings", value: "0", icon: GraduationCap, tint: "#2563eb" },
+];
+
+const QUICK_ACTIONS: { title: string; sub: string; icon: LucideIcon; tint: string }[] = [
+  { title: "Manage Users", sub: "Create, assign roles and permissions", icon: Users, tint: "#2563eb" },
+  { title: "View Trainings", sub: "Monitor staff progress", icon: GraduationCap, tint: "#0ea5e9" },
+  { title: "Companies", sub: "Manage customer organizations", icon: Building2, tint: "#2563eb" },
+  { title: "Incidents Overview", sub: "Platform-wide incident visibility", icon: Shield, tint: "#2563eb" },
+  { title: "Audit Overview", sub: "Platform-wide audit status", icon: ClipboardCheck, tint: "#2563eb" },
+  { title: "Waste Reports", sub: "Track environmental reports", icon: Trash2, tint: "#2563eb" },
+];
+
+const DETAIL_CARDS: { title: string; rows: { label: string; value: string; tone?: string }[] }[] = [
+  {
+    title: "Audit Compliance",
+    rows: [
+      { label: "Total Templates", value: "0" },
+      { label: "Active Templates", value: "0", tone: "#10b981" },
+      { label: "Drafts", value: "0" },
+    ],
   },
   {
-    id: "training",
-    label: "Training compliance",
-    value: "94%",
-    icon: GraduationCap,
-    color: "#34d399",
-    deltaLabel: "3 pts up vs last month",
-    deltaDown: false,
-    line: "M0,44 L28,38 L57,40 L85,28 L114,30 L142,18 L171,20 L200,10",
+    title: "Training Progress",
+    rows: [
+      { label: "Total Trainings", value: "0" },
+      { label: "Active", value: "0", tone: "#2563eb" },
+      { label: "Completions", value: "0" },
+    ],
+  },
+  {
+    title: "Outstanding Actions",
+    rows: [
+      { label: "Open Incidents", value: "0", tone: "#e11d48" },
+      { label: "Open Waste Reports", value: "0", tone: "#f59e0b" },
+      { label: "Active Inductions", value: "0" },
+    ],
   },
 ];
 
-const COMPLIANCE_BADGES = [
-  { label: "ISO 45001", meta: "Certified · valid" },
-  { label: "ISO 14001", meta: "Certified · valid" },
-  { label: "OSHA-aligned", meta: "Audit-ready" },
-];
-
-const CARD_CLASS =
-  "rounded-2xl border border-rule bg-white/90 backdrop-blur-xl shadow-[0_20px_45px_-20px_rgba(15,23,42,0.25)] dark:bg-slate-900/80 dark:shadow-[0_20px_45px_-20px_rgba(0,0,0,0.6)]";
-
-function areaPath(line: string, height = 56) {
-  return `${line} L200,${height} L0,${height} Z`;
-}
-
-function SafetyScoreCard() {
+function TopBar() {
   return (
-    <div className={cn(CARD_CLASS, "p-5 sm:p-6")}>
-      <div className="flex items-start justify-between">
-        <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-          Portfolio Safety Score
-        </p>
-        <ArrowUpRight className="h-3.5 w-3.5 text-slate-300 dark:text-slate-600" />
+    <div className="flex h-12 shrink-0 items-center gap-2.5 border-b border-slate-200 bg-white px-3 sm:h-14 sm:px-5">
+      <ChevronLeft className="hidden h-4 w-4 shrink-0 text-slate-300 sm:block" aria-hidden="true" />
+      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-blue-600 sm:h-7 sm:w-7">
+        <ShieldCheck className="h-3.5 w-3.5 text-white sm:h-4 sm:w-4" strokeWidth={2.25} />
+      </span>
+      <span className="shrink-0 text-xs font-extrabold tracking-tight text-slate-900 sm:text-sm">
+        360CRD
+      </span>
+
+      <div className="ml-2 hidden min-w-0 flex-1 items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-slate-400 sm:flex sm:max-w-xs">
+        <Search className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+        <span className="truncate text-xs">Search modules...</span>
       </div>
 
-      <div className="mt-4 flex items-center gap-4">
-        <div className="relative h-20 w-20 shrink-0 sm:h-24 sm:w-24">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-violet to-sky opacity-30 blur-lg" />
-          <div
-            className="relative h-20 w-20 rounded-full p-[3px] sm:h-24 sm:w-24"
-            style={{
-              background:
-                "conic-gradient(from -90deg, #2563eb 0deg, #38bdf8 345deg, rgba(15,23,42,0.08) 345deg 360deg)",
-            }}
-          >
-            <div className="flex h-full w-full flex-col items-center justify-center rounded-full bg-white dark:bg-slate-900">
-              <span className="text-2xl font-extrabold leading-none text-slate-900 dark:text-white">
-                96
-              </span>
-              <span className="text-[8px] text-slate-400">/ 100</span>
+      <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
+        <span className="hidden items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-medium text-slate-600 sm:flex">
+          Urban Spark Media
+          <ChevronDown className="h-3 w-3" aria-hidden="true" />
+        </span>
+        <span className="relative flex h-7 w-7 items-center justify-center rounded-full text-slate-400">
+          <Bell className="h-4 w-4" aria-hidden="true" />
+          <span className="absolute right-1 top-1 h-1.5 w-1.5 rounded-full bg-rose-500" />
+        </span>
+        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-600 text-[11px] font-bold text-white">
+          JO
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function Sidebar() {
+  return (
+    <div className="hidden w-44 shrink-0 flex-col justify-between border-r border-slate-200 bg-white p-3 md:flex lg:w-52">
+      <div>
+        {SIDEBAR_GROUPS.map((group) => (
+          <div key={group.heading} className="mt-4 first:mt-0">
+            <p className="mb-1.5 px-2 text-[9px] font-semibold uppercase tracking-wider text-slate-400 lg:text-[10px]">
+              {group.heading}
+            </p>
+            <div className="space-y-0.5">
+              {group.items.map((item) => (
+                <div key={item.label} className="relative">
+                  {item.active && (
+                    <span className="absolute -left-3 top-1/2 h-5 w-[3px] -translate-y-1/2 rounded-r-full bg-blue-600" />
+                  )}
+                  <div
+                    className={cn(
+                      "flex items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-[11px] font-medium lg:text-xs",
+                      item.active ? "bg-blue-50 text-blue-600" : "text-slate-500"
+                    )}
+                  >
+                    <item.icon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                    <span className="truncate">{item.label}</span>
+                    {item.label === "Settings" && (
+                      <ChevronDown className="ml-auto h-3 w-3 shrink-0" aria-hidden="true" />
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-        <div className="min-w-0">
-          <p className="text-sm font-semibold text-emerald-500">+4 pts</p>
-          <p className="text-[10px] text-slate-400">this quarter</p>
-        </div>
-      </div>
-
-      <svg viewBox="0 0 200 44" className="mt-4 h-11 w-full" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="safety-area" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#2563eb" stopOpacity="0.25" />
-            <stop offset="100%" stopColor="#2563eb" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient id="safety-line" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#2563eb" />
-            <stop offset="100%" stopColor="#38bdf8" />
-          </linearGradient>
-        </defs>
-        <path
-          d={areaPath("M0,34 L28,30 L57,32 L85,20 L114,22 L142,12 L171,14 L200,4", 44)}
-          fill="url(#safety-area)"
-          stroke="none"
-        />
-        <path
-          d="M0,34 L28,30 L57,32 L85,20 L114,22 L142,12 L171,14 L200,4"
-          fill="none"
-          stroke="url(#safety-line)"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-      <div className="mt-3 flex items-center justify-between border-t border-slate-100 pt-3 text-[10px] text-slate-400 dark:border-white/5">
-        <span>Incidents −8%</span>
-        <span>Training +3%</span>
-        <span>PPE 100%</span>
-      </div>
-    </div>
-  );
-}
-
-function StatCard({ stat }: { stat: (typeof STATS)[number] }) {
-  const TrendIcon = stat.deltaDown ? TrendingDown : TrendingUp;
-  return (
-    <div className={cn(CARD_CLASS, "p-5 sm:p-6")}>
-      <div className="flex items-center justify-between">
-        <div
-          className="flex h-10 w-10 items-center justify-center rounded-xl"
-          style={{ backgroundColor: `${stat.color}18`, color: stat.color }}
-        >
-          <stat.icon className="h-5 w-5" />
-        </div>
-        <ArrowUpRight className="h-3.5 w-3.5 text-slate-300 dark:text-slate-600" />
-      </div>
-
-      <p className="mt-4 text-2xl font-bold leading-none text-slate-900 dark:text-white sm:text-[28px]">
-        {stat.value}
-      </p>
-      <p className="mt-1.5 text-[11px] text-slate-500 dark:text-slate-400">{stat.label}</p>
-
-      <svg viewBox="0 0 200 56" className="mt-3 h-14 w-full" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id={`grad-${stat.id}`} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor={stat.color} stopOpacity="0.3" />
-            <stop offset="100%" stopColor={stat.color} stopOpacity="0" />
-          </linearGradient>
-        </defs>
-        <path d={areaPath(stat.line)} fill={`url(#grad-${stat.id})`} stroke="none" />
-        <path
-          d={stat.line}
-          fill="none"
-          stroke={stat.color}
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-
-      <div
-        className="mt-2 flex items-center gap-1 border-t border-slate-100 pt-3 text-[10px] font-medium dark:border-white/5"
-        style={{ color: stat.deltaDown ? "#10b981" : stat.color }}
-      >
-        <TrendIcon className="h-3 w-3" />
-        {stat.deltaLabel}
-      </div>
-    </div>
-  );
-}
-
-function SiteStatusCard() {
-  return (
-    <div className={cn(CARD_CLASS, "p-5 sm:p-6")}>
-      <div className="flex items-start justify-between">
-        <p className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
-          24 active sites
-        </p>
-        <ArrowUpRight className="h-3.5 w-3.5 text-slate-300 dark:text-slate-600" />
-      </div>
-
-      <div className="mt-4 grid grid-cols-8 gap-1.5">
-        {SITES.map((status, i) => (
-          <span
-            key={i}
-            className="aspect-square rounded-[4px]"
-            style={{ backgroundColor: SITE_STATUS[status] }}
-          />
         ))}
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1.5 border-t border-slate-100 pt-3 text-[10px] text-slate-500 dark:border-white/5 dark:text-slate-400">
-        <span className="flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-[2px] bg-emerald-400" />
-          {SITE_COUNTS.healthy} healthy
-        </span>
-        <span className="flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-[2px] bg-amber-400" />
-          {SITE_COUNTS.attention} attention
-        </span>
-        <span className="flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-[2px] bg-violet" />
-          {SITE_COUNTS.audit} audit due
-        </span>
+      <div className="border-t border-slate-200 pt-3">
+        <div className="flex items-center gap-2 px-1">
+          <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600 text-[10px] font-bold text-white">
+            J
+          </span>
+          <div className="min-w-0">
+            <p className="truncate text-[11px] font-medium text-slate-900">johnsmith</p>
+            <p className="truncate text-[9px] text-slate-400">john@gmail.com</p>
+          </div>
+        </div>
+        <div className="mt-2.5 flex items-center gap-1.5 rounded-full bg-slate-100 p-1 text-[9px] font-medium text-slate-500">
+          <span className="flex flex-1 items-center justify-center gap-1 rounded-full bg-white py-1 text-slate-900 shadow-sm">
+            <Sun className="h-2.5 w-2.5" aria-hidden="true" />
+            Light
+          </span>
+          <span className="flex flex-1 items-center justify-center gap-1 rounded-full py-1">
+            <Moon className="h-2.5 w-2.5" aria-hidden="true" />
+            Dark
+          </span>
+        </div>
+        <div className="mt-2.5 flex items-center gap-2 px-1 text-[11px] text-slate-400">
+          <LogOut className="h-3.5 w-3.5" aria-hidden="true" />
+          Sign out
+        </div>
       </div>
     </div>
   );
 }
 
-function ComplianceCard() {
+function StatCard({ stat }: { stat: (typeof STAT_CARDS)[number] }) {
   return (
-    <div className={cn(CARD_CLASS, "p-5 sm:p-6")}>
+    <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm sm:p-4">
       <div className="flex items-start justify-between">
-        <p className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
-          Audit-ready
-        </p>
-        <ArrowUpRight className="h-3.5 w-3.5 text-slate-300 dark:text-slate-600" />
+        <span
+          className="flex h-8 w-8 items-center justify-center rounded-lg"
+          style={{ backgroundColor: `${stat.tint}18`, color: stat.tint }}
+        >
+          <stat.icon className="h-4 w-4" aria-hidden="true" />
+        </span>
+        <ArrowUpRight className="h-3.5 w-3.5 text-slate-300" aria-hidden="true" />
       </div>
+      <p className="mt-3 text-xl font-extrabold leading-none text-slate-900 sm:text-2xl">
+        {stat.value}
+      </p>
+      <p className="mt-1.5 truncate text-[10px] text-slate-500 sm:text-[11px]">{stat.label}</p>
+    </div>
+  );
+}
 
-      <div className="mt-4 flex flex-col divide-y divide-slate-100 dark:divide-white/5">
-        {COMPLIANCE_BADGES.map((badge) => (
-          <div key={badge.label} className="flex items-center justify-between gap-2 py-2.5 first:pt-0 last:pb-0">
-            <span className="flex items-center gap-1.5 text-sm font-medium text-slate-700 dark:text-slate-200">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/15">
-                <Check className="h-3 w-3 text-emerald-500" />
-              </span>
-              {badge.label}
+function QuickActionCard({ action }: { action: (typeof QUICK_ACTIONS)[number] }) {
+  return (
+    <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-3 shadow-sm sm:p-4">
+      <span
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
+        style={{ backgroundColor: `${action.tint}18`, color: action.tint }}
+      >
+        <action.icon className="h-4 w-4" aria-hidden="true" />
+      </span>
+      <div className="min-w-0 flex-1">
+        <p className="truncate text-xs font-semibold text-slate-900">{action.title}</p>
+        <p className="truncate text-[10px] text-slate-500">{action.sub}</p>
+      </div>
+      <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-slate-300" aria-hidden="true" />
+    </div>
+  );
+}
+
+function DetailCard({ card }: { card: (typeof DETAIL_CARDS)[number] }) {
+  return (
+    <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm sm:p-4">
+      <p className="text-xs font-semibold text-slate-900">{card.title}</p>
+      <div className="mt-2.5 divide-y divide-slate-100">
+        {card.rows.map((row) => (
+          <div
+            key={row.label}
+            className="flex items-center justify-between py-1.5 text-[11px] first:pt-0 last:pb-0"
+          >
+            <span className="text-slate-500">{row.label}</span>
+            <span className="font-semibold" style={{ color: row.tone ?? "#0f172a" }}>
+              {row.value}
             </span>
-            <span className="shrink-0 text-[10px] text-slate-400">{badge.meta}</span>
           </div>
         ))}
       </div>
@@ -268,80 +270,57 @@ function ComplianceCard() {
 export default function DashboardPreview() {
   const prefersReducedMotion = useReducedMotion();
 
-  const columns = [
-    {
-      offsetClass: "sm:pt-0",
-      cards: [<SafetyScoreCard key="safety" />, <StatCard key="training" stat={STATS[2]} />],
-    },
-    {
-      offsetClass: "sm:pt-10",
-      cards: [<StatCard key="incidents" stat={STATS[0]} />, <SiteStatusCard key="sites" />],
-    },
-    {
-      offsetClass: "sm:pt-4",
-      cards: [<StatCard key="waste" stat={STATS[1]} />, <ComplianceCard key="compliance" />],
-    },
-  ];
-
-  let cardIndex = 0;
-
-  const entranceVariants = (i: number): Variants =>
-    prefersReducedMotion
-      ? { hidden: { opacity: 0 }, show: { opacity: 1, transition: { duration: 0.3 } } }
-      : {
-          hidden: { opacity: 0, y: 20, scale: 0.94 },
-          show: {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            transition: { duration: 0.5, delay: 0.15 + i * 0.07, ease: EASE },
-          },
-        };
+  const panelVariants: Variants = prefersReducedMotion
+    ? { hidden: { opacity: 0 }, show: { opacity: 1, transition: { duration: 0.3 } } }
+    : {
+        hidden: { opacity: 0, y: 24, scale: 0.97 },
+        show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, delay: 0.15, ease: EASE } },
+      };
 
   return (
-    <div
+    <motion.div
       role="img"
-      aria-label="360crd Superadmin dashboard shown as six floating cards: portfolio safety score, open incidents, waste logged, training compliance, a multi-site status heatmap, and ISO/OSHA compliance readiness"
-      className="relative mx-auto grid w-full max-w-5xl grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-7"
+      aria-label="360crd Superadmin dashboard: sidebar navigation, platform overview stat cards for total users, sites, companies and active trainings, quick actions, and audit, training and outstanding-action summaries"
+      initial="hidden"
+      animate="show"
+      variants={panelVariants}
+      className="mx-auto w-full max-w-5xl overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_40px_80px_-30px_rgba(15,23,42,0.35)]"
     >
-      {columns.map((col, colI) => (
-        <div key={colI} className={cn("flex flex-col gap-5 sm:gap-7", col.offsetClass)}>
-          {col.cards.map((card) => {
-            const i = cardIndex++;
-            const floatDuration = 4.2 + i * 0.5;
-            const floatDelay = i * 0.35;
-            return (
-              <motion.div
-                key={i}
-                aria-hidden="true"
-                initial="hidden"
-                animate="show"
-                variants={entranceVariants(i)}
-              >
-                <motion.div
-                  animate={
-                    prefersReducedMotion
-                      ? undefined
-                      : { y: [0, -10, 0] }
-                  }
-                  transition={
-                    prefersReducedMotion
-                      ? undefined
-                      : {
-                          duration: floatDuration,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                          delay: floatDelay,
-                        }
-                  }
-                >
-                  {card}
-                </motion.div>
-              </motion.div>
-            );
-          })}
+      <div aria-hidden="true" className="flex flex-col">
+        <TopBar />
+        <div className="flex">
+          <Sidebar />
+          <div className="min-w-0 flex-1 bg-slate-50 p-3.5 sm:p-6">
+            <p className="text-[11px] font-medium text-slate-500 sm:text-xs">
+              Welcome back, johnsmith
+            </p>
+            <h3 className="mt-0.5 text-base font-extrabold text-slate-900 sm:text-2xl">
+              Platform Overview
+            </h3>
+            <p className="mt-1 text-[11px] text-slate-500 sm:text-sm">
+              Enterprise-wide visibility across all sites and operations.
+            </p>
+
+            <div className="mt-4 grid grid-cols-2 gap-2.5 sm:mt-6 sm:grid-cols-4 sm:gap-4">
+              {STAT_CARDS.map((stat) => (
+                <StatCard key={stat.label} stat={stat} />
+              ))}
+            </div>
+
+            <div className="mt-2.5 grid grid-cols-1 gap-2.5 sm:mt-4 sm:grid-cols-3 sm:gap-4">
+              {QUICK_ACTIONS.map((action) => (
+                <QuickActionCard key={action.title} action={action} />
+              ))}
+            </div>
+
+            <div className="mt-2.5 grid grid-cols-1 gap-2.5 sm:mt-4 sm:grid-cols-3 sm:gap-4">
+              {DETAIL_CARDS.map((card) => (
+                <DetailCard key={card.title} card={card} />
+              ))}
+            </div>
+          </div>
         </div>
-      ))}
-    </div>
+      </div>
+    </motion.div>
   );
 }
