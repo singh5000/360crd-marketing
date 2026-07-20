@@ -6,15 +6,25 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 
 /**
- * Section 11 — closing full-bleed CTA banner. Background photo is a real,
- * openly-licensed image (CC BY 4.0, Daniel Mekis via Wikimedia Commons —
- * see the credit line at the bottom of the section, required by the
- * license), not a coded placeholder. Swap /public/images/cta-construction-
- * site.jpg for real 360crd site photography when available and this
- * component needs no other changes.
+ * Closing full-bleed CTA banner — Section 11 on the homepage, and reused
+ * as the final section on every inner module page (e.g. Section 8 of
+ * /features/incidents) with page-specific copy. Background photo is a
+ * real, openly-licensed image (CC BY 4.0, Daniel Mekis via Wikimedia
+ * Commons — see the credit line at the bottom of the section, required by
+ * the license), not a coded placeholder. Every prop has a default equal
+ * to the original homepage copy, so existing `<FinalCTA />` call sites
+ * don't need to change.
  */
 
 const EASE = [0.16, 1, 0.3, 1] as const;
+
+export interface FinalCTAProps {
+  badgeLabel?: string;
+  heading?: string;
+  description?: string;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+}
 
 function fadeUp(reduced: boolean, delay = 0): Variants {
   if (reduced) {
@@ -26,7 +36,13 @@ function fadeUp(reduced: boolean, delay = 0): Variants {
   };
 }
 
-export default function FinalCTA() {
+export default function FinalCTA({
+  badgeLabel = "Ready when you are",
+  heading = "Ready to run your sites like software?",
+  description = "Book a 20-minute walkthrough and see 360crd running on a site like yours — incidents, waste, training and audits, all in one place.",
+  primaryCta = { label: "Book a Demo", href: "/demo" },
+  secondaryCta = { label: "Talk to Sales", href: "/contact" },
+}: FinalCTAProps) {
   const reduced = !!useReducedMotion();
 
   return (
@@ -66,34 +82,30 @@ export default function FinalCTA() {
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-sm">
             <ShieldCheck className="h-3.5 w-3.5 text-sky" aria-hidden="true" />
-            Ready when you are
+            {badgeLabel}
           </span>
 
           <h2
             id="final-cta-heading"
             className="mt-6 text-[32px] font-extrabold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-[44px]"
           >
-            Ready to run your sites like software?
+            {heading}
           </h2>
-          <p className="mt-5 text-lg leading-relaxed text-slate-300">
-            Book a 20-minute walkthrough and see 360crd running on a site
-            like yours — incidents, waste, training and audits, all in one
-            place.
-          </p>
+          <p className="mt-5 text-lg leading-relaxed text-slate-300">{description}</p>
 
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
-              href="/demo"
+              href={primaryCta.href}
               className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-violet px-7 py-3.5 text-sm font-semibold text-white transition-shadow duration-200 hover:shadow-[0_0_32px_-8px_var(--sky)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:w-auto"
             >
-              Book a Demo
+              {primaryCta.label}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
             <Link
-              href="/contact"
+              href={secondaryCta.href}
               className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:w-auto"
             >
-              Talk to Sales
+              {secondaryCta.label}
             </Link>
           </div>
         </motion.div>

@@ -222,19 +222,22 @@ export default function IncidentIntro({
               {topCard && (
                 <IntroDataCard
                   card={topCard}
-                  className="absolute -top-2 -right-16 z-20 hidden sm:block"
+                  className="absolute -top-2 -right-16 z-20 hidden lg:block"
                 />
               )}
               {bottomCard && (
                 <IntroDataCard
                   card={bottomCard}
-                  className="absolute -bottom-2 -left-16 z-20 hidden sm:block"
+                  className="absolute -bottom-2 -left-16 z-20 hidden lg:block"
                 />
               )}
 
-              {/* Mobile fallback: cards stack under the image instead of floating */}
+              {/* Mobile + tablet fallback: cards stack under the image instead
+                  of floating — the image itself doesn't widen past max-w-sm
+                  until lg:, so floating cards offset -16 past its edge would
+                  overflow the viewport at any narrower width. */}
               {(topCard || bottomCard) && (
-                <div className="mt-4 flex flex-col items-center gap-3 sm:hidden">
+                <div className="mt-4 flex flex-col items-center gap-3 lg:hidden">
                   {topCard && <IntroDataCard card={topCard} className="w-full max-w-xs" />}
                   {bottomCard && <IntroDataCard card={bottomCard} className="w-full max-w-xs" />}
                 </div>

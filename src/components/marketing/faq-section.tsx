@@ -7,17 +7,21 @@ import { ArrowRight, Plus, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /**
- * Section 12 — FAQ. Laid out as a 2-column grid (not the single stacked
- * list a numbered-accordion FAQ usually uses) per explicit request — each
+ * FAQ section — Section 12 on the homepage, and reused on inner module
+ * pages (e.g. the closing section of /features/incidents) with their own
+ * question set. Laid out as a 2-column grid (not the single stacked list
+ * a numbered-accordion FAQ usually uses) per explicit request — each
  * question is its own bordered card rather than a hairline-divided row,
  * since a full-bleed divider doesn't read cleanly across two columns.
+ * Every prop has a default equal to the original homepage copy, so
+ * existing `<FaqSection />` call sites don't need to change.
  */
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-type FaqItem = { question: string; answer: string };
+export type FaqItem = { question: string; answer: string };
 
-const FAQS: FaqItem[] = [
+const DEFAULT_FAQS: FaqItem[] = [
   {
     question: "How is 360crd priced?",
     answer:
@@ -164,7 +168,25 @@ function FaqCard({
   );
 }
 
-export default function FaqSection() {
+export interface FaqSectionProps {
+  eyebrow?: string;
+  heading?: string;
+  subhead?: string;
+  faqs?: FaqItem[];
+  footerText?: string;
+  footerLinkLabel?: string;
+  footerLinkHref?: string;
+}
+
+export default function FaqSection({
+  eyebrow = "FAQ",
+  heading = "Questions worth asking before you sign up.",
+  subhead = "Straight answers, before your team commits to anything.",
+  faqs = DEFAULT_FAQS,
+  footerText = "Still have questions?",
+  footerLinkLabel = "Talk to our team",
+  footerLinkHref = "/contact",
+}: FaqSectionProps) {
   const reduced = !!useReducedMotion();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -183,21 +205,19 @@ export default function FaqSection() {
           className="mx-auto max-w-2xl text-center"
         >
           <p className="text-base font-semibold uppercase tracking-[0.14em] text-violet dark:text-sky">
-            FAQ
+            {eyebrow}
           </p>
           <h2
             id="faq-heading"
             className="mt-4 text-[30px] font-extrabold leading-[1.15] tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-[40px]"
           >
-            Questions worth asking before you sign up.
+            {heading}
           </h2>
-          <p className="mt-5 text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-            Straight answers, before your team commits to anything.
-          </p>
+          <p className="mt-5 text-lg leading-relaxed text-slate-600 dark:text-slate-300">{subhead}</p>
         </motion.div>
 
         <div className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-6">
-          {FAQS.map((item, i) => (
+          {faqs.map((item, i) => (
             <FaqCard
               key={item.question}
               item={item}
@@ -216,12 +236,12 @@ export default function FaqSection() {
           variants={fadeUp(reduced, 0.15)}
           className="mt-12 flex flex-wrap items-center justify-center gap-2 text-base"
         >
-          <span className="text-slate-500 dark:text-slate-400">Still have questions?</span>
+          <span className="text-slate-500 dark:text-slate-400">{footerText}</span>
           <Link
-            href="/contact"
+            href={footerLinkHref}
             className="inline-flex items-center gap-1.5 font-semibold text-violet transition-colors hover:text-violet/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky focus-visible:ring-offset-2 dark:text-sky dark:hover:text-sky/80"
           >
-            Talk to our team
+            {footerLinkLabel}
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </motion.div>

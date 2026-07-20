@@ -9,6 +9,15 @@ const nextConfig: NextConfig = {
   // machine's LAN IP (e.g. testing from another device) instead of
   // localhost — without this, client components silently fail to hydrate.
   allowedDevOrigins: ["192.168.1.6"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
+        pathname: "/photos/**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
