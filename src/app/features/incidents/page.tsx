@@ -185,8 +185,8 @@ export default function IncidentManagementPage() {
               label: "STEP 1",
               title: "Report from the field",
               body: "A worker opens the form, picks a severity, attaches photo evidence, and submits — the site and reporter are captured automatically. No paperwork, no separate app.",
-              screenshotSrc: "/images/step1-field-report.jpg",
-              screenshotAlt: "A worker on-site in a hard hat filling out a report on a tablet",
+              screenshotSrc: "/images/step1-field-log.jpg",
+              screenshotAlt: "Two workers on-site with a clipboard, filing an incident report",
             },
             {
               label: "STEP 2",

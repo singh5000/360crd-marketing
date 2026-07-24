@@ -64,6 +64,27 @@ const ACCENT_STYLES: Record<
     lineFilled: "bg-indigo-600",
     text: "text-indigo-600 dark:text-indigo-400",
   },
+  teal: {
+    badge: "bg-teal-100 text-teal-700 dark:bg-teal-950/50 dark:text-teal-300",
+    number: "bg-teal-600",
+    lineDefault: "bg-teal-200 dark:bg-teal-900/50",
+    lineFilled: "bg-teal-600",
+    text: "text-teal-600 dark:text-teal-400",
+  },
+  fuchsia: {
+    badge: "bg-fuchsia-100 text-fuchsia-700 dark:bg-fuchsia-950/50 dark:text-fuchsia-300",
+    number: "bg-fuchsia-600",
+    lineDefault: "bg-fuchsia-200 dark:bg-fuchsia-900/50",
+    lineFilled: "bg-fuchsia-600",
+    text: "text-fuchsia-600 dark:text-fuchsia-400",
+  },
+  cyan: {
+    badge: "bg-cyan-100 text-cyan-700 dark:bg-cyan-950/50 dark:text-cyan-300",
+    number: "bg-cyan-600",
+    lineDefault: "bg-cyan-200 dark:bg-cyan-900/50",
+    lineFilled: "bg-cyan-600",
+    text: "text-cyan-600 dark:text-cyan-400",
+  },
 };
 
 export type CapabilityStep = {

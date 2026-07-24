@@ -31,6 +31,9 @@ const EYEBROW_BADGE_STYLES: Record<AccentTheme, string> = {
   emerald: "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300",
   amber: "bg-amber-100 text-amber-700 dark:bg-amber-950/50 dark:text-amber-300",
   indigo: "bg-indigo-100 text-indigo-700 dark:bg-indigo-950/50 dark:text-indigo-300",
+  teal: "bg-teal-100 text-teal-700 dark:bg-teal-950/50 dark:text-teal-300",
+  fuchsia: "bg-fuchsia-100 text-fuchsia-700 dark:bg-fuchsia-950/50 dark:text-fuchsia-300",
+  cyan: "bg-cyan-100 text-cyan-700 dark:bg-cyan-950/50 dark:text-cyan-300",
 };
 
 export type StatusStage = {

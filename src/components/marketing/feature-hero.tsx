@@ -20,7 +20,16 @@ import { cn } from "@/lib/utils";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-export type AccentTheme = "rose" | "sky" | "violet" | "emerald" | "amber" | "indigo";
+export type AccentTheme =
+  | "rose"
+  | "sky"
+  | "violet"
+  | "emerald"
+  | "amber"
+  | "indigo"
+  | "teal"
+  | "fuchsia"
+  | "cyan";
 
 // `breadcrumb` is display labels only (no href pairs per the prop schema),
 // so non-final segments link out via this best-effort lookup; unmapped
