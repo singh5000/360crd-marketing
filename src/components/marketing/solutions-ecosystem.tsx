@@ -152,17 +152,38 @@ export default function SolutionsEcosystem() {
                 className="absolute inset-[10%] rounded-full bg-gradient-to-br from-violet/10 via-sky/10 to-transparent blur-3xl"
               />
 
+              {!reduced && (
+                <motion.div
+                  aria-hidden="true"
+                  className="absolute inset-[26%] rounded-full bg-gradient-to-br from-violet/25 to-sky/25 blur-2xl"
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.6, 0.15, 0.6] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                />
+              )}
+
               {PARTICLES.map((p, i) => (
-                <span
+                <motion.span
                   key={i}
                   aria-hidden="true"
                   className="absolute h-2 w-2 rounded-full bg-violet/40 dark:bg-sky/40"
                   style={{ top: p.top, left: p.left }}
+                  animate={reduced ? undefined : { opacity: [0.2, 0.9, 0.2], scale: [1, 1.4, 1] }}
+                  transition={{ duration: 3 + i * 0.6, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
                 />
               ))}
 
-              <div className="absolute inset-[6%] rounded-full border border-dashed border-violet/20 dark:border-sky/15" />
-              <div className="absolute inset-[16%] rounded-full border border-dashed border-violet/15 dark:border-sky/10" />
+              <motion.div
+                aria-hidden="true"
+                className="absolute inset-[6%] rounded-full border border-dashed border-violet/20 dark:border-sky/15"
+                animate={reduced ? undefined : { rotate: 360 }}
+                transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
+              />
+              <motion.div
+                aria-hidden="true"
+                className="absolute inset-[16%] rounded-full border border-dashed border-violet/15 dark:border-sky/10"
+                animate={reduced ? undefined : { rotate: -360 }}
+                transition={{ duration: 55, repeat: Infinity, ease: "linear" }}
+              />
 
               <div className="absolute left-1/2 top-1/2 z-10 flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-br from-violet to-sky text-white shadow-[0_30px_64px_-16px_rgba(37,99,235,0.55)] xl:h-40 xl:w-40">
                 <span className="text-2xl font-extrabold tracking-tight xl:text-3xl">360°</span>
@@ -177,17 +198,27 @@ export default function SolutionsEcosystem() {
                     className="absolute z-20 -translate-x-1/2 -translate-y-1/2"
                     style={pos}
                   >
-                    <Link href={mod.href} className="group flex flex-col items-center gap-2 focus-visible:outline-none">
-                      <span
-                        className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-[0_16px_32px_-14px_rgba(15,23,42,0.3)] ring-1 ring-slate-900/5 transition-transform duration-200 group-hover:scale-110 dark:bg-slate-800 dark:ring-white/10 xl:h-20 xl:w-20"
-                        style={{ color: mod.color }}
-                      >
-                        <mod.icon className="h-7 w-7 xl:h-8 xl:w-8" aria-hidden="true" />
-                      </span>
-                      <span className="rounded-full bg-white/90 px-2.5 py-1 text-xs font-semibold text-slate-600 backdrop-blur-sm dark:bg-slate-900/80 dark:text-slate-300 xl:text-sm">
-                        {mod.label}
-                      </span>
-                    </Link>
+                    <motion.div
+                      animate={reduced ? undefined : { y: [0, -9, 0] }}
+                      transition={{
+                        duration: 3.5 + (i % 3) * 0.5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: i * 0.25,
+                      }}
+                    >
+                      <Link href={mod.href} className="group flex flex-col items-center gap-2 focus-visible:outline-none">
+                        <span
+                          className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-[0_16px_32px_-14px_rgba(15,23,42,0.3)] ring-1 ring-slate-900/5 transition-transform duration-200 group-hover:scale-110 dark:bg-slate-800 dark:ring-white/10 xl:h-20 xl:w-20"
+                          style={{ color: mod.color }}
+                        >
+                          <mod.icon className="h-7 w-7 xl:h-8 xl:w-8" aria-hidden="true" />
+                        </span>
+                        <span className="rounded-full bg-white/90 px-2.5 py-1 text-xs font-semibold text-slate-600 backdrop-blur-sm dark:bg-slate-900/80 dark:text-slate-300 xl:text-sm">
+                          {mod.label}
+                        </span>
+                      </Link>
+                    </motion.div>
                   </motion.div>
                 );
               })}
